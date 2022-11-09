@@ -1,0 +1,172 @@
+[2022-11-09 11:24:51.076 +01:00  INF]  Entity Framework Core 6.0.10 initialized 'DataContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+[2022-11-09 11:25:26.289 +01:00  INF]  Entity Framework Core 6.0.10 initialized 'DataContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+[2022-11-09 11:25:26.373 +01:00  INF]  Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-11-09 11:25:26.397 +01:00  INF]  Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-11-09 11:25:26.401 +01:00  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-11-09 11:25:26.402 +01:00  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-11-09 11:25:26.420 +01:00  INF]  Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2022-11-09 11:25:26.429 +01:00  INF]  Applying migration '20221109102451_Added-Password'.
+[2022-11-09 11:25:26.521 +01:00  INF]  Executed DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [User] ADD [PasswordHash] varbinary(max) NOT NULL DEFAULT 0x;
+[2022-11-09 11:25:26.526 +01:00  INF]  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [User] ADD [PasswordSalt] varbinary(max) NOT NULL DEFAULT 0x;
+[2022-11-09 11:25:26.534 +01:00  INF]  Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+UPDATE [User] SET [PasswordHash] = 0x9350A0951C825EF460197A282B8FF04E201A1DCDAFFC83AD23DA68C5C89F3928FFBAFE5ABDA62ADA48DA5FA875261161E788B96FA5204E2DDFA6B933BE603624, [PasswordSalt] = 0xF4F0A316F9BFD975728DBEDD36A738E82D4D543D31753ABE985D516E7C633B7B441B12054063111B6F8944303BA0C504F4E4563651E487CD4D3EDD27B400A251C1F68522812DC2C356F5F037882BF56E67198F5F40D6C014E3D007CC9B484FE61BFF6FD59968BB685A05E2C5BAE19EE70BCA2D86D241E5EEEC129700BEABC520
+WHERE [Id] = 1;
+SELECT @@ROWCOUNT;
+[2022-11-09 11:25:26.538 +01:00  INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20221109102451_Added-Password', N'6.0.10');
+[2022-11-09 12:18:58.922 +01:00  INF]  Now listening on: http://localhost:31525
+[2022-11-09 12:18:59.012 +01:00  INF]  Application started. Press Ctrl+C to shut down.
+[2022-11-09 12:18:59.013 +01:00  INF]  Hosting environment: Development
+[2022-11-09 12:18:59.013 +01:00  INF]  Content root path: /Users/jakovvinozganic/Projects/FairBank/FairBankApi/
+[2022-11-09 12:19:01.045 +01:00  INF]  Request starting HTTP/1.1 GET http://localhost:31525/swagger/index.html - -
+[2022-11-09 12:19:01.189 +01:00  INF]  Request finished HTTP/1.1 GET http://localhost:31525/swagger/index.html - - - 200 - text/html;charset=utf-8 146.8842ms
+[2022-11-09 12:19:01.355 +01:00  INF]  Request starting HTTP/1.1 GET http://localhost:31525/swagger/v1/swagger.json - -
+[2022-11-09 12:19:01.431 +01:00  INF]  Request finished HTTP/1.1 GET http://localhost:31525/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 75.1440ms
+[2022-11-09 12:20:39.702 +01:00  INF]  Request starting HTTP/1.1 POST http://localhost:31525/api/Users/login application/json 65
+[2022-11-09 12:20:39.722 +01:00  WRN]  Failed to determine the https port for redirect.
+[2022-11-09 12:20:39.726 +01:00  INF]  Executing endpoint 'FairBank.Controllers.UsersController.Login (FairBankApi)'
+[2022-11-09 12:20:39.753 +01:00  INF]  Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.String]] Login(FairBankApi.Models.LoginDto) on controller FairBank.Controllers.UsersController (FairBankApi).
+[2022-11-09 12:20:40.417 +01:00  INF]  Entity Framework Core 6.0.10 initialized 'DataContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+[2022-11-09 12:20:55.257 +01:00  ERR]  An error occurred using the connection to database 'FairBankDb' on server 'localhost,1433'.
+[2022-11-09 12:20:55.284 +01:00  ERR]  An exception occurred while iterating over the results of a query for context type 'FairBankApi.Data.DataContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 40 - Could not open a connection to SQL Server: Could not open a connection to SQL Server)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 40 - Could not open a connection to SQL Server: Could not open a connection to SQL Server)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+[2022-11-09 12:20:55.386 +01:00  INF]  Executed action FairBank.Controllers.UsersController.Login (FairBankApi) in 15630.1478ms
+[2022-11-09 12:20:55.388 +01:00  INF]  Executed endpoint 'FairBank.Controllers.UsersController.Login (FairBankApi)'
+[2022-11-09 12:20:55.390 +01:00  ERR]  An unhandled exception has occurred while executing the request.
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 40 - Could not open a connection to SQL Server: Could not open a connection to SQL Server)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at FairBankApi.Services.User.UserService.GetUserByUsername(String username) in /Users/jakovvinozganic/Projects/FairBank/FairBankApi/Services/User/UserService.cs:line 80
+   at FairBank.Controllers.UsersController.Login(LoginDto login) in /Users/jakovvinozganic/Projects/FairBank/FairBankApi/Controllers/UsersController.cs:line 89
+   at lambda_method5(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+[2022-11-09 12:20:55.408 +01:00  INF]  Request finished HTTP/1.1 POST http://localhost:31525/api/Users/login application/json 65 - 500 - text/plain;+charset=utf-8 15706.2758ms
+[2022-11-09 12:22:07.304 +01:00  INF]  Now listening on: http://localhost:31525
+[2022-11-09 12:22:07.365 +01:00  INF]  Application started. Press Ctrl+C to shut down.
+[2022-11-09 12:22:07.365 +01:00  INF]  Hosting environment: Development
+[2022-11-09 12:22:07.365 +01:00  INF]  Content root path: /Users/jakovvinozganic/Projects/FairBank/FairBankApi/
+[2022-11-09 12:22:08.728 +01:00  INF]  Request starting HTTP/1.1 GET http://localhost:31525/swagger/index.html - -
+[2022-11-09 12:22:08.898 +01:00  INF]  Request finished HTTP/1.1 GET http://localhost:31525/swagger/index.html - - - 200 - text/html;charset=utf-8 171.8731ms
+[2022-11-09 12:22:09.171 +01:00  INF]  Request starting HTTP/1.1 GET http://localhost:31525/swagger/v1/swagger.json - -
+[2022-11-09 12:22:09.239 +01:00  INF]  Request finished HTTP/1.1 GET http://localhost:31525/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 68.1755ms
+[2022-11-09 12:22:19.699 +01:00  INF]  Request starting HTTP/1.1 POST http://localhost:31525/api/Users/login application/json 65
+[2022-11-09 12:22:19.713 +01:00  WRN]  Failed to determine the https port for redirect.
+[2022-11-09 12:22:19.719 +01:00  INF]  Executing endpoint 'FairBank.Controllers.UsersController.Login (FairBankApi)'
+[2022-11-09 12:22:19.747 +01:00  INF]  Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.String]] Login(FairBankApi.Models.LoginDto) on controller FairBank.Controllers.UsersController (FairBankApi).
+[2022-11-09 12:22:20.360 +01:00  INF]  Entity Framework Core 6.0.10 initialized 'DataContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+[2022-11-09 12:22:20.703 +01:00  INF]  Executed DbCommand (58ms) [Parameters=[@__username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+FROM [User] AS [u]
+WHERE [u].[Username] = @__username_0
+[2022-11-09 12:22:20.844 +01:00  INF]  Executing OkObjectResult, writing value of type 'System.String'.
+[2022-11-09 12:22:20.847 +01:00  INF]  Executed action FairBank.Controllers.UsersController.Login (FairBankApi) in 1097.2504ms
+[2022-11-09 12:22:20.848 +01:00  INF]  Executed endpoint 'FairBank.Controllers.UsersController.Login (FairBankApi)'
+[2022-11-09 12:22:20.853 +01:00  INF]  Request finished HTTP/1.1 POST http://localhost:31525/api/Users/login application/json 65 - 200 - text/plain;+charset=utf-8 1154.6982ms
+[2022-11-09 12:28:58.399 +01:00  INF]  Now listening on: http://localhost:31525
+[2022-11-09 12:28:58.536 +01:00  INF]  Application started. Press Ctrl+C to shut down.
+[2022-11-09 12:28:58.536 +01:00  INF]  Hosting environment: Development
+[2022-11-09 12:28:58.536 +01:00  INF]  Content root path: /Users/jakovvinozganic/Projects/FairBank/FairBankApi/
+[2022-11-09 12:28:59.861 +01:00  INF]  Request starting HTTP/1.1 GET http://localhost:31525/swagger/index.html - -
+[2022-11-09 12:29:00.024 +01:00  INF]  Request finished HTTP/1.1 GET http://localhost:31525/swagger/index.html - - - 200 - text/html;charset=utf-8 162.7051ms
+[2022-11-09 12:29:00.238 +01:00  INF]  Request starting HTTP/1.1 GET http://localhost:31525/swagger/v1/swagger.json - -
+[2022-11-09 12:29:00.344 +01:00  INF]  Request finished HTTP/1.1 GET http://localhost:31525/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 106.8121ms
+[2022-11-09 12:29:18.050 +01:00  INF]  Request starting HTTP/1.1 POST http://localhost:31525/api/Users/login application/json 65
+[2022-11-09 12:29:18.082 +01:00  WRN]  Failed to determine the https port for redirect.
+[2022-11-09 12:29:18.088 +01:00  INF]  Executing endpoint 'FairBank.Controllers.UsersController.Login (FairBankApi)'
+[2022-11-09 12:29:18.123 +01:00  INF]  Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.String]] Login(FairBankApi.Models.LoginDto) on controller FairBank.Controllers.UsersController (FairBankApi).
+[2022-11-09 12:29:18.742 +01:00  INF]  Entity Framework Core 6.0.10 initialized 'DataContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.10' with options: None
+[2022-11-09 12:29:19.115 +01:00  INF]  Executed DbCommand (45ms) [Parameters=[@__username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+FROM [User] AS [u]
+WHERE [u].[Username] = @__username_0
+[2022-11-09 12:29:19.254 +01:00  INF]  Executing OkObjectResult, writing value of type 'System.String'.
+[2022-11-09 12:29:19.257 +01:00  INF]  Executed action FairBank.Controllers.UsersController.Login (FairBankApi) in 1132.0542ms
+[2022-11-09 12:29:19.258 +01:00  INF]  Executed endpoint 'FairBank.Controllers.UsersController.Login (FairBankApi)'
+[2022-11-09 12:29:19.263 +01:00  INF]  Request finished HTTP/1.1 POST http://localhost:31525/api/Users/login application/json 65 - 200 - text/plain;+charset=utf-8 1213.8177ms
